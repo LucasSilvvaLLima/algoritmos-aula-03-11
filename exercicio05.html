@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 05</title>
+</head>
+
+<body>
+
+    <span>Cadastre seus filmes favoritos: <input type="text" id="in_filme"> <button
+            onclick="cadastrar()">Cadastrar</button></span><br><br>
+
+    <span>
+        Seu filme favorito: <span id="id_favorito">Ainda não existe</span> <br>
+        Seu 3º filme favorito: <span id="id_terceiro">Ainda não existe</span> <br>
+        Total de filmes cadastrados: <span id="id_total">0</span> <br>
+    </span>
+
+</body>
+
+</html>
+<script>
+    var filmes = []
+
+    function cadastrar() {
+        var filme = in_filme.value
+        filmes.push(filme)
+        in_filme.value = ``
+
+        var terceiro_cadastrado = filmes.length > 2
+        var favorito = filmes[0]
+        var terceiro = filmes[2]
+        var total = filmes.length
+
+        id_favorito.innerHTML = `${favorito}`
+
+        if (!terceiro_cadastrado) {
+            id_terceiro.innerHTML = "Ainda não existe"
+        } else {
+            id_terceiro.innerHTML = `${terceiro}`
+        }
+
+        id_total.innerHTML = `${total}`
+
+    }
+</script>

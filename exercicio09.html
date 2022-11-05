@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    nome projeto que já criou na vida: <input type="text" id="in_projeto"> <button onclick="registrarProjeto()">Registrar projeto</button>
+    <button onclick="mostrar()">Mostrar Projetos</button><br><br>
+    <div id="div_resultado"></div>
+</body>
+</html>
+<script>
+    var projetos = []
+    function registrarProjeto(){
+        div_resultado.innerHTML = ``
+        var projeto = in_projeto.value
+        projetos.push(projeto)
+
+        var total_projetos = projetos.length
+        var nivel
+        var projetoNivel = ``
+        for(var i = 0; i <= total_projetos; i++){
+            if (i < 5) {
+                nivel = `Júnior`
+            } else if(i < 13) {
+                nivel = `Pleno`
+            }else {
+                nivel = `Sênior`
+            }
+
+            if (i > 4 && i < 13) {
+                projetoNivel = ` desde o projeto: ${projetos[4]}`
+            }
+            if(i > 12){
+                projetoNivel = ` desde o projeto: ${projetos[12]}`
+            }
+        }
+        div_resultado.innerHTML = `Você já fez ${total_projetos} projetos. Por isso você é um profissional ${nivel} ${projetoNivel}`
+
+    }
+    function mostrar(){
+        var lista = ``
+        for(var i = projetos.length - 1; i >= 0; i--){
+            lista += `${projetos[i]}`
+        }
+    }
+</script>

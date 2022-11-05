@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Linhas de onibus que pegou na semana: <input type="text" id="in_buzao"><button onclick="registrarLinha()">Gravar
+        buzão</button><br><br>
+    Pesquisar Linha: <input type="text" id="in_pesquisa"><button onclick="pesquisar()">Pesquisar</button><br>
+    <div id="div_linhas"></div>
+    <div id="div_pesquisa"></div>
+</body>
+
+</html>
+<script>
+    var onibus = []
+    
+    function registrarLinha() {
+        div_linhas.innerHTML = ``
+        var buzao = in_buzao.value
+        onibus.push(buzao)
+        for (var i = onibus.length - 1; i >= 0; i--) {
+            div_linhas.innerHTML += `${onibus[i]}<br>`
+        }
+    }
+    function pesquisar() {
+        div_pesquisa.innerHTML = ``
+        var ordemLinhas = ``
+        var pesquisa = in_pesquisa.value
+        var contadorOnibus = 0;
+
+        for (var i = 0; i < onibus.length; i++) {
+            if (onibus.indexOf(pesquisa) < 0) {
+                div_pesquisa.innerHTML = `Você nunca pegou essa linha`
+            } else if (pesquisa == onibus[i]) {
+                contadorOnibus++
+                ordemLinhas += `${i + 1}°, ` 
+                div_pesquisa.innerHTML = `Você já pegou essa linha ${contadorOnibus} vezes, nessa ordem: ${ordemLinhas}`
+            }
+        }
+    }
+</script>

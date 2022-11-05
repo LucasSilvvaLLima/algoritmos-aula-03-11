@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     Cadastrar Bairros: <input type="text" id="in_bairro">
-    <button onclick="cadastrar()">Cadastrar</button>
+    <button onclick="cadastrar()">Cadastrar bairro</button><br><br>
+
+    <span>Número da moradia: <input type="text" id="in_numero" placeholder="Ex: 1 para o 1° Bairro"></span> <button
+        onclick="lembrar()">Relembrar moradia</button><br><br>
+        <div id="div_bairro"></div>
 </body>
+
 </html>
 <script>
     var bairros = [];
-    function cadastrar(){
-        var bairro =in_bairro.value
+    function cadastrar() {
+        var bairro = in_bairro.value
         bairros.push(bairro)
+        in_bairro.value = ``
+    }
+
+    function lembrar() {
+        div_bairro.innerHTML = ``
+        var numero_para_usuario = Number(in_numero.value)
+        var numero_real = numero_para_usuario - 1
+        var numero_valido = numero_real <= (bairros.length - 1)
+        var numero_bairro = bairros[numero_real]
+        if (numero_para_usuario == 0) {
+            div_bairro.innerHTML = "Insira um valor maior que 0"
+        }else if (!numero_valido) {
+            div_bairro.innerHTML = `Você ainda não morou num ${numero_para_usuario}º bairro!`
+        }else{
+            div_bairro.innerHTML = `O ${numero_para_usuario}° bairro que você morou foi ${numero_bairro}`
+        }
+
+
     }
 </script>

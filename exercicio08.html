@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Nome dos alunos: <input type="text" id="in_nome"> <button onclick="cadastrarAluno()">Cadastrar Aluno</button>
+    <div id="div_alunos"></div>
+
+</body>
+
+</html>
+<script>
+    var alunos = []
+    function cadastrarAluno() {
+        var aluno = in_nome.value
+        alunos.push(aluno)
+        var lista = ""
+        for(i = alunos.length - 1; i >= 0; i--){
+            lista += `${alunos[i]}<br>`
+        }
+
+        div_alunos.innerHTML = lista
+        in_nome.value = ``
+    }
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <span>Insira seus filmes faritos do mais favorito até o menos favorito:<input type="text" id="in_filme"></span>
+    <button onclick="cadastrarFilme()">Cadastrar filme</button><br><br>
+    <button onclick="favoritos()">Ver Favoritos</button><br><br>
+    <div id="div_lista"></div>
+
+
+</body>
+
+</html>
+
+<script>
+    var filmes = []
+    function cadastrarFilme() {
+        var filme = in_filme.value
+        filmes.push(filme)
+        in_filme.value = ``
+
+    }
+
+    function favoritos() {
+        div_lista.innerHTML = ``;
+        var mensagem = ``;
+        var favorito = filmes[0];
+        var menos_favorito = filmes[filmes.length - 1];
+        var total = filmes.length
+        for (i = 0; i < filmes.length; i++) {
+            mensagem += `${filmes[i]} <br>`
+        }
+        mensagem += `<br> Total: ${total}<br>O que mais gosta é ${favorito}<br>E desses, o que menos gosta é ${menos_favorito}`
+
+        div_lista.innerHTML = mensagem
+    }
+</script>
